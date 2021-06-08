@@ -22,3 +22,28 @@ let citations = [
     ["Vous n’êtes jamais trop vieux pour vous fixer de nouveaux buts, ou rendre vos rêves réalité.", "C.S. Lewis"],
     ["Un pessimiste voit la difficulté dans chaque opportunité. Un optimiste voit une opportunité dans chaque difficulté.", "Winston Churchill"]
   ];
+
+//récupération de l'index des tableaux aléatoirement
+let nombreAleatoire = (max = citations.length) => {
+    return Math.floor(Math.random() * max);
+}
+
+//selection dans le DOM des éléments à modifier
+let btn = document.getElementById('nouveau');
+let auteur = document.getElementById('auteur');
+let citation = document.getElementById('citation');
+
+//division des citations dans un tableu citation et auteur séparé
+let citationArray = [];
+let auteurArray = [];
+citations.forEach((item) => {
+    citationArray.push(item[0]);
+    auteurArray.push(item[1]);
+})
+
+//création de l'évènement clique + récupération des citations et auteurs en fonction de l'index généré aléatoirement
+btn.addEventListener('click', () => {
+    indexTableau = nombreAleatoire();
+    auteur.textContent = auteurArray[indexTableau];
+    citation.textContent = citationArray[indexTableau];
+})
